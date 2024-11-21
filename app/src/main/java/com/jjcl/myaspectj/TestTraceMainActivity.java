@@ -15,7 +15,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.jjcl.myaspectj.resource.TestLeakActivity;
 import com.jjcl.myaspectj.trace.IssueFilter;
+import com.jjcl.myaspectj.utils.MemoryInfo;
 import com.tencent.matrix.AppActiveMatrixDelegate;
 import com.tencent.matrix.Matrix;
 import com.tencent.matrix.listeners.IAppForeground;
@@ -50,6 +52,9 @@ public class TestTraceMainActivity extends Activity implements IAppForeground {
         }
 
         AppActiveMatrixDelegate.INSTANCE.addListener(this);
+
+        MemoryInfo memoryInfo = new MemoryInfo(this);
+        memoryInfo.printMemoryInfo();
     }
 
 
@@ -213,6 +218,11 @@ public class TestTraceMainActivity extends Activity implements IAppForeground {
             Log.i("", "");
         }
         return;
+    }
+
+    public void testResourceLeak(View view) {
+        Intent intent = new Intent(this, TestLeakActivity.class);
+        startActivity(intent);
     }
 
     class AssertionArrayException extends Exception {

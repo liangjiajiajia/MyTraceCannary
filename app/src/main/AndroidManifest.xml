@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyASPectj">
         <activity
+            android:name=".resource.TestLeakActivity"
+            android:exported="true" />
+        <activity
+            android:name=".resource.ManualDumpActivity"
+            android:exported="true" />
+        <activity
             android:name=".TestFpsActivity"
             android:exported="true" />
         <activity
